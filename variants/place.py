@@ -17,6 +17,3 @@ class Hotel:
         self.name = name
         self.id = id
 
-
-hotel = Hotel(city_id= 2)
-
