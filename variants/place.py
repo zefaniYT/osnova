@@ -1,10 +1,10 @@
 class Country:
-        def country(self, name, id=None):
-            self.id = id
-            self.name = name
+    def __init__(self, name, id=None):
+        self.id = id
+        self.name = name
 
 class City:
-    def city(self, country_id, name, id = None):
+    def __init__(self, country_id, name, id = None):
         self.country_id = country_id
         self.id = id
         self.name = name
@@ -18,5 +18,5 @@ class Hotel:
         self.id = id
 
 
-hotel = Hotel(city_id=)
+hotel = Hotel(city_id= 2)
 
