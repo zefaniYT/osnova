@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error                                                       #обработка ошибок и исключений
-from External.config import db_config
+from config import db_config
 
 def create_connection_mysql_db(db_host, user_name, user_password, db_name = None):      #функция соедениния к базе
     connection_db = None
