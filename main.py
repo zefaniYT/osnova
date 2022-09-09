@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error                                                       #обработка ошибок и исключений
-from config import db_config
+import config
 
 def create_connection_mysql_db(db_host, user_name, user_password, db_name = None):      #функция соедениния к базе
     connection_db = None
@@ -16,9 +16,9 @@ def create_connection_mysql_db(db_host, user_name, user_password, db_name = None
         print("Error: ", db_connection_error)
     return connection_db
 
-conn = create_connection_mysql_db(db_config["mysql"]["host"],
-                                  db_config["mysql"]["user"],
-                                  db_config["mysql"]["pass"])
+conn = create_connection_mysql_db(config["mysql"]["host"],
+                                  config["mysql"]["user"],
+                                  config["mysql"]["pass"])
 
 
 cursor = conn.cursor(dictionary=True)                        #для взаимодействия (удаление, добавление и т.п)
