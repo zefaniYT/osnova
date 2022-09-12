@@ -108,3 +108,54 @@ class CityManager:
         except Exception as Error:
             return Error
 
+class HotelManager:
+    def add(self, path: place.Hotel):
+        try:
+            with mysql.connector.connect(host=config.host,
+                                         user=config.user,
+                                         password=config.password,
+                                         database=config.database,
+                                         ) as connection:
+                add_Hotel = f"""
+                    INSERT INTO Hotel
+                    (city_id, stars, price, name)
+                    VALUES
+                     ('{path.city_id}, {path.stars}, {path.price}  ,{path.name}')"""
+                with connection.cursor() as cursor:
+                    cursor.execute(add_Hotel)
+                    connection.commit()
+        except Exception as Error:
+            return Error
+
+    def change(self, path: place.Hotel):
+        try:
+            with mysql.connector.connect(host=config.host,
+                                         user=config.user,
+                                         password=config.password,
+                                         database=config.database,
+                                         ) as connection:
+                change_Hotel = f"""
+                    UPDATE Hotel SET
+                    NAME = '{path.name}, city_id = '{path.city_id}, stars = {path.stars}, price = {path.price}
+                    WHERE id = {path.id}"""
+                with connection.cursor() as cursor:
+                    cursor.execute(change_Hotel)
+                    connection.commit()
+        except Exception as Error:
+            return Error
+
+    def delete(self, path: place.Hotel):
+        try:
+            with mysql.connector.connect(host=config.host,
+                                         user=config.user,
+                                         password=config.password,
+                                         database=config.database,
+                                         ) as connection:
+                delete_Hotel = f"""
+                DELETE FROM Hotel
+                WHERE id = {path.id}"""
+                with connection.cursor() as cursor:
+                    cursor.execute(delete_Hotel)
+                    connection.commit()
+        except Exception as Error:
+            return Error
