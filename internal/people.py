@@ -3,7 +3,7 @@ class Client:
         self.name = name
         self.id = id
 
-class payer:
+class Payer:
     def __init__(self, name, id):
         self.name = name
         self.id = id

@@ -4,7 +4,7 @@ import mysql.connector
 
 
 class CountryManager:
-    def add(self, path: place.Country):
+    def add(self, place: place.Country):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -15,14 +15,14 @@ class CountryManager:
                     INSERT INTO Country
                     (name)
                     VALUES
-                     ('{path.name}')"""
+                     ('{place.name}')"""
                 with connection.cursor() as cursor:
                                 cursor.execute(add_Country)
                                 connection.commit()
         except Exception as Error:
             return Error
 
-    def change(self, path: place.Country):
+    def change(self, place: place.Country):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -31,15 +31,15 @@ class CountryManager:
                                          ) as connection:
                 change_Country = f"""
                     UPDATE Country SET
-                    NAME = '{path.name}'                   
-                    WHERE id = {path.id}"""
+                    NAME = '{place.name}'                   
+                    WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(change_Country)
                     connection.commit()
         except Exception as Error:
             return Error
 
-    def delete(self, path: place.Country):
+    def delete(self, place: place.Country):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -48,7 +48,7 @@ class CountryManager:
                                          ) as connection:
                 delete_Country = f"""
                 DELETE FROM Country
-                WHERE id = {path.id}"""
+                WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(delete_Country)
                     connection.commit()
@@ -57,7 +57,7 @@ class CountryManager:
         #Конец функций страны
 
 class CityManager:
-    def add(self, path: place.City):
+    def add(self, place: place.City):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -68,14 +68,14 @@ class CityManager:
                     INSERT INTO City
                     (country_id, name)
                     VALUES
-                     ('{path.country_id}  ,{path.name}')"""
+                     ('{place.country_id}  ,{place.name}')"""
                 with connection.cursor() as cursor:
                     cursor.execute(add_City)
                     connection.commit()
         except Exception as Error:
             return Error
 
-    def change(self, path: place.City):
+    def change(self, place: place.City):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -84,15 +84,15 @@ class CityManager:
                                          ) as connection:
                 change_City = f"""
                     UPDATE City SET
-                    NAME = '{path.name}, country_id = '{path.country_id}
-                    WHERE id = {path.id}"""
+                    NAME = '{place.name}, country_id = '{place.country_id}
+                    WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(change_City)
                     connection.commit()
         except Exception as Error:
             return Error
 
-    def delete(self, path: place.City):
+    def delete(self, place: place.City):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -101,7 +101,7 @@ class CityManager:
                                          ) as connection:
                 delete_City = f"""
                 DELETE FROM City
-                WHERE id = {path.id}"""
+                WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(delete_City)
                     connection.commit()
@@ -109,7 +109,7 @@ class CityManager:
             return Error
 
 class HotelManager:
-    def add(self, path: place.Hotel):
+    def add(self, place: place.Hotel):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -120,14 +120,14 @@ class HotelManager:
                     INSERT INTO Hotel
                     (city_id, stars, price, name)
                     VALUES
-                     ('{path.city_id}, {path.stars}, {path.price}  ,{path.name}')"""
+                     ('{place.city_id}, {place.stars}, {place.price}  ,{place.name}')"""
                 with connection.cursor() as cursor:
                     cursor.execute(add_Hotel)
                     connection.commit()
         except Exception as Error:
             return Error
 
-    def change(self, path: place.Hotel):
+    def change(self, place: place.Hotel):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -136,15 +136,15 @@ class HotelManager:
                                          ) as connection:
                 change_Hotel = f"""
                     UPDATE Hotel SET
-                    NAME = '{path.name}, city_id = '{path.city_id}, stars = {path.stars}, price = {path.price}
-                    WHERE id = {path.id}"""
+                    NAME = '{place.name}, city_id = '{place.city_id}, stars = {place.stars}, price = {place.price}
+                    WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(change_Hotel)
                     connection.commit()
         except Exception as Error:
             return Error
 
-    def delete(self, path: place.Hotel):
+    def delete(self, place: place.Hotel):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
@@ -153,7 +153,7 @@ class HotelManager:
                                          ) as connection:
                 delete_Hotel = f"""
                 DELETE FROM Hotel
-                WHERE id = {path.id}"""
+                WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
                     cursor.execute(delete_Hotel)
                     connection.commit()
