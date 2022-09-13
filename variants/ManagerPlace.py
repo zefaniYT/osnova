@@ -68,7 +68,7 @@ class CityManager:
                     INSERT INTO City
                     (country_id, name)
                     VALUES
-                     ('{place.country_id}  ,{place.name}')"""
+                    ('{place.country_id}  ,{place.name}')"""
                 with connection.cursor() as cursor:
                     cursor.execute(add_City)
                     connection.commit()
