@@ -8,16 +8,16 @@ class CountryManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
-                add_Country = f"""
-                    INSERT INTO Country
+                add_country = f"""
+                    INSERT INTO country
                     (name)
                     VALUES
                      ('{place.name}')"""
                 with connection.cursor() as cursor:
-                                cursor.execute(add_Country)
+                                cursor.execute(add_country)
                                 connection.commit()
         except Exception as Error:
             return Error
@@ -26,15 +26,15 @@ class CountryManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
-                change_Country = f"""
-                    UPDATE Country SET
+                change_country = f"""
+                    UPDATE country SET
                     NAME = '{place.name}'                   
                     WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
-                    cursor.execute(change_Country)
+                    cursor.execute(change_country)
                     connection.commit()
         except Exception as Error:
             return Error
@@ -43,14 +43,14 @@ class CountryManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
-                delete_Country = f"""
-                DELETE FROM Country
+                delete_country = f"""
+                DELETE FROM country
                 WHERE id = {place.id}"""
                 with connection.cursor() as cursor:
-                    cursor.execute(delete_Country)
+                    cursor.execute(delete_country)
                     connection.commit()
         except Exception as Error:
             return Error
@@ -61,7 +61,7 @@ class CityManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_City = f"""
@@ -79,7 +79,7 @@ class CityManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_City = f"""
@@ -96,7 +96,7 @@ class CityManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_City = f"""
@@ -113,7 +113,7 @@ class HotelManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_Hotel = f"""
@@ -131,7 +131,7 @@ class HotelManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Hotel = f"""
@@ -148,7 +148,7 @@ class HotelManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Hotel = f"""

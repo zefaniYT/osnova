@@ -8,14 +8,14 @@ class TransportationManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_Transport = f"""
-                    INSERT INTO Transport
+                    INSERT INTO transportation
                     (name, price)
                     VALUES
-                     ('{path.name}  ,{path.price}')"""
+                    ('{path.name}', {path.price})"""
                 with connection.cursor() as cursor:
                                 cursor.execute(add_Transport)
                                 connection.commit()
@@ -26,7 +26,7 @@ class TransportationManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Transport = f"""
@@ -43,7 +43,7 @@ class TransportationManager:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Transport = f"""
