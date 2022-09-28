@@ -3,19 +3,19 @@ import internal.tour
 import mysql.connector
 
 
-class Tour:
+class TourManager:
     def add(self, tour: internal.tour.Tour):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_tour = f"""
                     INSERT INTO Tour
-                    (price, transportation_id, hotel_id, days, Departure_date, Arrival_date)
+                    (price, transportation_id, hotel_id, days, Departure_date, Arrival_date, name)
                     VALUES
-                     ('('{tour.price}, {tour.transportation_id}, {tour.hotel_id}, {tour.days}, {tour.Departure_date}, {tour.Arrival_date}')"""
+                     ('('{tour.price}, {tour.transportation_id}, {tour.hotel_id}, {tour.days}, {tour.Departure_date}, {tour.Arrival_date}, {tour.name}')"""
                 with connection.cursor() as cursor:
                     cursor.execute(add_tour)
                     connection.commit()
@@ -26,7 +26,7 @@ class Tour:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Transport = f"""
@@ -43,7 +43,7 @@ class Tour:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Transport = f"""
@@ -55,12 +55,12 @@ class Tour:
         except Exception as Error:
             return Error
 
-class SoldTours:
+class SoldToursManager:
     def add(self, tour: internal.tour.SoldTours):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_Country = f"""
@@ -78,7 +78,7 @@ class SoldTours:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Transport = f"""
@@ -95,7 +95,7 @@ class SoldTours:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Transport = f"""

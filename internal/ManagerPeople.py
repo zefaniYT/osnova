@@ -3,12 +3,12 @@ import internal.people
 import mysql.connector
 
 
-class Client:
+class ClientManager:
     def add(self, people: internal.people.Client):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_Client = f"""
@@ -26,7 +26,7 @@ class Client:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Client = f"""
@@ -43,7 +43,7 @@ class Client:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Client = f"""
@@ -55,12 +55,12 @@ class Client:
         except Exception as Error:
             return Error
 
-class Payer:
+class PayerManager:
     def add(self, people: internal.people.Payer):
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 add_Payer = f"""
@@ -78,7 +78,7 @@ class Payer:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 change_Payer = f"""
@@ -95,7 +95,7 @@ class Payer:
         try:
             with mysql.connector.connect(host=config.host,
                                          user=config.user,
-                                         password=config.password,
+                                         password=str(config.password),
                                          database=config.database,
                                          ) as connection:
                 delete_Payer = f"""
