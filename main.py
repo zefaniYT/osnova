@@ -26,4 +26,7 @@ ClientManager = ClientManager()
 PayerManager = PayerManager()
 
 
-@app.route("")
+@app.route("/object_type", methods=["POST", "PUT", "DELETE"])
+def type():
+    if request.method == "POST":
+        data = request.json
